@@ -2,6 +2,7 @@
 #define CASE_H_INCLUDED
 
 #include <stdlib.h>
+#include <allegro.h>
 
 #include "../shared/val.h"
 
@@ -37,6 +38,8 @@ typedef struct _case
     int state2_m;
 
     int habit_nbr;
+
+    BITMAP* img;
 } t_case;
 
 t_case **init_tabCases();
