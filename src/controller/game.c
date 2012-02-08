@@ -39,7 +39,7 @@ void game()
 		if(simulateur)
 		{
 			//le jeu est en mode simulateur
-			ret(2);
+			rest(2);
 			if(temps < time(NULL))
 			{
 				temps = time(NULL);
