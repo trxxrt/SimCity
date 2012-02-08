@@ -32,6 +32,8 @@ typedef struct _case
 
     //Sous sol -2 : eau
     int state2;
+
+    int habit_nbr;
 } t_case;
 
 t_case **init_tabCases();
