@@ -43,6 +43,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="src/controller/action.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/controller/action.h" />
 		<Unit filename="src/controller/game.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -71,6 +75,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/model/scroll.h" />
+		<Unit filename="src/shared/platform.h" />
 		<Unit filename="src/shared/tools.c">
 			<Option compilerVar="CC" />
 		</Unit>

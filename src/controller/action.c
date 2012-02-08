@@ -10,6 +10,7 @@ void* action(void* camera)
 	// 1. cas du clic gauche
 	while(1)
 	{
+		usleep(500);
 		if(mouse_b&1)
 		{
 			xx=mouse_x+cam->dx;
@@ -18,7 +19,7 @@ void* action(void* camera)
 			x2d = (yy / (TILE_H * cam->zoom) + xx / (TILE_W * cam->zoom));
 			y2d = (yy / (TILE_H * cam->zoom) - xx / (TILE_W * cam->zoom));
 
-			while(mouse_b&1){}
+			while(mouse_b&1){ usleep(500); }
 
 			printf("clicked : (%0.1f, %0.1f) -> (%d, %d)\n", xx, yy, x2d, y2d);
 		}
