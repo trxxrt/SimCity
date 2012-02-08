@@ -33,14 +33,14 @@ void* zoom (void * camera)
 		usleep(500);
 		if(key[KEY_PLUS_PAD] && cam->temp_zoom<2.0)
 		{
-		while(key[KEY_PLUS_PAD]){}
+		while(key[KEY_PLUS_PAD]){ usleep(500); }
 			cam->temp_zoom=cam->temp_zoom*2.0;
 			cam->temp_dx*=2;
 			cam->temp_dy*=2;
 		}
 		if(key[KEY_MINUS_PAD]&& cam->temp_zoom>0.5)
 		{
-		while(key[KEY_MINUS_PAD]){}
+		while(key[KEY_MINUS_PAD]){ usleep(500); }
 			cam->temp_zoom=cam->temp_zoom*0.5;
 			cam->temp_dx/=2;
 			cam->temp_dy/=2;
@@ -59,12 +59,12 @@ void* floor_c (void * camera)
 		usleep(500);
 		if(key[KEY_PGDN] && cam->temp_floor >-2)
 		{
-			while(key[KEY_PGDN]){}
+			while(key[KEY_PGDN]){ usleep(500); }
 			cam->temp_floor--;
 		}
 		if(key[KEY_PGUP] && cam->temp_floor<0)
 		{
-			while(key[KEY_PGUP]){}
+			while(key[KEY_PGUP]){ usleep(500); }
 			cam->temp_floor++;
 		}
 	}
