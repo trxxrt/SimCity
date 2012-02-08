@@ -37,9 +37,22 @@ typedef struct _case
     int state2;
     int state2_m;
 
+    //nombre d'habitants
     int habit_nbr;
 
+    //images actueles du bâtiment
     BITMAP* img;
+
+    //nombre d'années à construire
+    int y_build;
+
+    //variables de connexion aux réseaux :
+    int water;
+    int elec;
+    int road;
+
+    //nombre de places dans le bâtiment actuel:
+    int build_size;
 } t_case;
 
 t_case **init_tabCases();
