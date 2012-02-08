@@ -52,6 +52,7 @@ void game()
 		{
 			//le jeu est en mode éditeur
 			//TODO
+
 		}
 
 		//mise à jour de l'état du jeu :
