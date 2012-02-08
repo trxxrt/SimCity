@@ -10,6 +10,7 @@ void* action(void* camera)
 	// 1. cas du clic gauche
 	while(1)
 	{
+		usleep(500);
 		if(mouse_b&1)
 		{
 			xx=mouse_x+cam->dx;
