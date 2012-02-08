@@ -26,12 +26,15 @@ typedef struct _case
 {
     //Sol : habitation, routes
     int state0;
+    int state0_m;
 
     //Sous-sol -1 : electricite
     int state1;
+    int state1_m;
 
     //Sous sol -2 : eau
     int state2;
+    int state2_m;
 
     int habit_nbr;
 } t_case;
