@@ -49,6 +49,7 @@ cleanRelease: clean
 
 clean: clean_obj
 	rm -f $(EXE)
+	rm -f SimCity.layout SimCity.depend
 	rm -Rf bin
 	
 clean_obj:

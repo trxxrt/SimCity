@@ -1,0 +1,7 @@
+*.o
+bin/*
+obj/*
+Simcity.layout
+Simcity
+Simcity.exe
+*.layout

@@ -11,7 +11,7 @@
 	#include <pthread.h>
 #endif
 
-#ifdef WINDOWS
+#ifndef LINUX
 	#include "../shared/pthreadwin32/pthread.h"
 #endif
 
