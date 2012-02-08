@@ -5,13 +5,14 @@
 #include <stdlib.h>
 #include <allegro.h>
 #include <string.h>
+#include <time.h>
 #include "../shared/platform.h"
 
 #ifdef LINUX
 	#include <pthread.h>
 #endif
 
-#ifndef LINUX
+#ifdef WINDOWS
 	#include "../shared/pthreadwin32/pthread.h"
 #endif
 
