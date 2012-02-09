@@ -36,8 +36,9 @@ Release: $(EXE) clean_obj
 	cp configuration.cfg bin/Release
 
 $(EXE): $(OBJ)
-	@echo "\n=== linking des objets en ==="
+	@echo "\n=== linking des objets ===\n"
 	gcc -o $@ $^ $(FLAGS)
+	@echo "done.\n"
 
 %.o: %.c %.h
 	@echo "\n > compilation de $<"
@@ -55,3 +56,4 @@ clean: clean_obj
 clean_obj:
 	@echo "\n=== Clean up du projet ===\n"
 	rm -f $(OBJ)
+	@echo "done.\n"
