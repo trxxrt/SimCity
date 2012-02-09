@@ -2,6 +2,7 @@
 #define SIMU_H
 
 #include <allegro.h>
+#include <stdio.h>
 
 #include "../model/case.h"
 #include "../shared/val.h"
@@ -13,6 +14,9 @@ int simu_raz(t_case** tab);
 void simu_all(t_case** tab);
 
 /*fonction de gesion des flux de population*/
-void simu_pop(t_case** tab);
+void simu_pop(t_case* p);
+
+/*fonction de mise à jour des bitmaps*/
+void simu_bmp_maj(t_case* p);
 
 #endif

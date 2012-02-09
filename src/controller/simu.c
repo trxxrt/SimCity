@@ -38,6 +38,12 @@ int simu_raz(t_case** tab)
 **/
 void simu_all(t_case** tab)
 {
+	//ressources 
+	int i, j;
+
+	//remise à zéro du tableau de case :
+	simu_raz(tab);
+
 	//test des liaisons aux réseaux :
 	//réseau routier :
 	//TODO
@@ -46,53 +52,148 @@ void simu_all(t_case** tab)
 	//réseau d'eau :
 	//TODO
 
-	//mouvements de population :
+	//mouvements de population et mise à jour des bitmaps :
+	for(i=0; i<size_map; i++)
+		for(j=0; j<size_map; j++)
+		{
+			simu_pop(tab[i][j]);
+			simu_bmp_maj(tab[i][j]);
+		}
 }
 
 
 /**
  * 	fonction de gestion des flux de population
 
- *	@param: - tab -> tableau de case de la map où créer les flux
+ *	@param: - p -> pointeur sur la case à maj
 
  * 	@return: nothing
 **/
-void simu_pop(t_case** tab)
+void simu_pop(t_case* p)
 {
 	//ressources
-	int i, j;
-	int percent_n, percent_p, percent_s;
+	int percent_pos, percent_sub, percent_ne;
 	int add;
 
-	//parcourt du tableau :
-	for(i=0; i<size_map; i++)
-		for(j=0; j<size_map; j++)
+	//on commence par vérifier si c'est bien une case d'habitation :
+	if(p->state0 == CONSTRUCT)
+	{
+		//si non connecté à une route
+		if(!p->road)
 		{
-			percent_p = 50;
-			percent_s = 20;
-			
-			//modification des pourcentages en fonction des connexions aux différents réseaux :
-			if(!tab[i][j]->road)
+			percent_pos = 0;
+			percent_sub = 50;
+		}
+		else
+		{
+			percent_pos = 25;
+			percent_sub = 25;
+		}
+
+		//si non connecté au réseau d'eau :
+		if(!p->water)
+		{
+			percent_pos -= 10;
+			percent_sub += 20;
+		}
+		else
+		{
+			percent_pos += 5;
+			percent_sub -= 5;
+		}
+
+		//si non connecté au réseau électrique :
+		if(!p->elec)
+		{
+			percent_pos -= 10;
+			percent_sub += 20;
+		}
+		else
+		{
+			percent_pos += 5;
+			percent_sub -= 5;
+		}
+
+		//si le bâtiment n'est pas en sur population
+		if(p->habit_nbr > p->build_size)
+		{
+			percent_pos -= 25;
+			percent_sub += 20;
+		}
+
+		//on remet les possibilité à 0 minimum:
+		percent_pos = (percent_pos < 0) ? 0 : percent_pos;
+		percent_sub = (percent_sub < 0) ? 0 : percent_sub;
+
+		//on met à jour le pourcentage neutre :
+		percent_ne = 100 - percent_pos - percent_sub;
+
+		//aléatoir pour l'ajout ou la soustraction d'habitants
+		add = rand()%101;
+
+		//calcul du nombre de personne à ajouter
+		if(add < percent_ne)
+			add = 0;
+		else
+		{
+			if(add < percent_ne + percent_pos)
+				add = 1;
+			else
 			{
-				percent_p = 0;
-				percent_s = 50;
+				if(add < 100)
+					add = -1;
+				else
+					add = 0; //WTF ?
+			}
+		}
+		p->habit_nbr += add * ((rand()%5) + 1);
+
+	}
+}
+
+/**
+ *	fonction de mise à jour des bitmaps de la case
+
+ *	@param: - p -> pointeur sur la case à actualiser
+
+ *	@return: nothing
+**/
+void simu_bmp_maj(t_case* p)
+{
+	//si on a des habitants :
+	if(p->habit_nbr)
+	{
+		//si on a pas de bâtiments
+		if(p->build_img < 0)
+		{
+			//TODO switch des chantiers (au hasard)
+			p->y_build = p->habit_nbr+1;
+		}
+		else
+		{
+			//si on a un batiment en construction
+			if(p->y_build)
+			{
+				p->y_build--;
+				//si on a fini de construire :
+				if(!p->y_build)
+				{
+					//TODO choix de la bitmap à afficher pour le nombre d'habitats
+				}
 			}
 			else
 			{
-				if(!tab[i][j]->water)
+				//si le bâtiment est trop petit
+				if(p->habit_nbr > p->build_size)
 				{
-					percent_p -= 15;
-					percent_s += 10;
-				}
-				if(!tab[i][j]->elec)
-				{
-					persent_p -= 15;
-					persent_s += 10;
+					//on vérifi si on agrandi le batiment (une chance sur 3
+					if(rand()%3 == 0)
+					{
+						//TODO switch des chantiers
+						p->y_build = p->habit_nbr+1;
+					}
 				}
 			}
-			percent_n = 100 - percent_p - percent_s;
-			
-			//ajout des personnes dans la case :
-			add = rand()%101;
 		}
+	}
 }
