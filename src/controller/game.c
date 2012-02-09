@@ -9,6 +9,7 @@ void game()
 	BITMAP * buffer = NULL;
 	t_case **tab = NULL;
 	t_scroll * camera = NULL;
+	t_menu * menu = NULL;
 	pthread_t thread_scroll;
 	pthread_t thread_floor;
 	pthread_t thread_action;
@@ -16,7 +17,9 @@ void game()
 
 	// 1. initialisation des variables de jeu
 	size_map = 15;
+	menu = initi_menu();
 	camera = init_scroll();
+	camera->menu = menu;
 	buffer = create_bitmap(SCREEN_W, SCREEN_H);
 	tiles = load_tiles();
 	tab = init_tabCases();

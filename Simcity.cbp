@@ -79,6 +79,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/model/case.h" />
+		<Unit filename="src/model/menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/model/menu.h" />
 		<Unit filename="src/model/scroll.c">
 			<Option compilerVar="CC" />
 		</Unit>

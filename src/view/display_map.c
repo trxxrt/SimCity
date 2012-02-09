@@ -39,6 +39,8 @@ void print_map (t_case **tab, BITMAP * buffer, t_scroll * camera, t_tiles * tile
 					stretch_sprite(buffer,tiles->electric, x_screen, y_screen, tiles->electric->w * camera->zoom, tiles->electric->h * camera->zoom);
 			}
 		}
+
+	display_menu(buffer, camera->menu);
 	info_click(tab, buffer, camera);
 	draw_sprite(screen, buffer, 0, 0);
 }

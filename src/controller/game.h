@@ -17,6 +17,7 @@
 #endif
 
 #include "../model/bitmaps.h"
+#include "../model/menu.h"
 #include "../model/case.h"
 #include "../model/scroll.h"
 #include "../view/display_map.h"
