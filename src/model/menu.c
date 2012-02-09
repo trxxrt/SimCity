@@ -42,7 +42,7 @@ void click_menu(t_menu * menu)
 			///fonction de changement de mode de musique
 		}
 	}
-	printf("clicked menu area : button %d\n",menu->last_choice);
+	printf("clicked MENU : button %d\n",menu->last_choice);
 }
 
 void display_menu(BITMAP * buffer, t_menu * menu)

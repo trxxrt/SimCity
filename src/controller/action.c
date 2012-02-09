@@ -1,19 +1,20 @@
 #include "action.h"
 
-void* action(void* camera)
+void* action(void* game_r)
 {
 	// 0. déclaration des variables locales
 	static int x2d, y2d;
 	static float xx, yy;
-	t_scroll* cam = (t_scroll*)camera;
+	t_game* game = (t_game*)game_r;
+	t_scroll* cam = game->camera;
 
 	// 1. cas du clic gauche
-	while(1)
+	while(!key[KEY_ESC])
 	{
-		usleep(500);
+		usleep(SLEEPING_TIME);
 		if(mouse_b&1)
 		{
-			if(!is_active_menu(cam->menu))
+			if(!is_active_menu(game->menu))
 			{
 				xx=mouse_x+cam->dx;
 				yy=mouse_y+cam->dy;
@@ -21,18 +22,19 @@ void* action(void* camera)
 				x2d = (yy / (TILE_H * cam->zoom) + xx / (TILE_W * cam->zoom));
 				y2d = (yy / (TILE_H * cam->zoom) - xx / (TILE_W * cam->zoom));
 
-				while(mouse_b&1){ usleep(500); }
+				while(mouse_b&1){ usleep(LONG_SLEEPING_TIME); }
 
-				if(!(x2d > size_map || x2d < 0 || y2d > size_map || y2d < 0))
+				if(!(x2d > size_map-1 || x2d < 0 || y2d > size_map-1 || y2d < 0))
 				{
-					printf("clicked : (%0.1f, %0.1f) -> (%d, %d)\n", xx, yy, x2d, y2d);
+					//printf("* clicked : CASE (%0.1f, %0.1f) -> (%d, %d)\n", xx, yy, x2d, y2d);
+					printf("clicked : CASE (%d, %d)\n", x2d, y2d);
 					/// TODO : ajout de maison, éléctricité ou eau
 				}
 			}
 			else
 			{
-				click_menu(cam->menu);
-				while(mouse_b&1){ usleep(500); }
+				click_menu(game->menu);
+				while(mouse_b&1){ usleep(LONG_SLEEPING_TIME); }
 			}
 		}
 	}

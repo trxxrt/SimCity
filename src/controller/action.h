@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "../model/scroll.h"
+#include "game.h"
 #include "../model/menu.h"
 #include "../shared/val.h"
 

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
 	//lancement du menu principal :
 	menu = menu_main();
-	if(menu == GAME) game();
+	if(menu == GAME) start_game();
 	return 0;
 }
 END_OF_MAIN();

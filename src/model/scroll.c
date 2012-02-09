@@ -1,11 +1,18 @@
 #include "scroll.h"
 
-void update_camera (t_scroll* camera)
+void* update_camera (void* camera)
 {
-	camera->dx = camera->temp_dx;
-	camera->dy = camera->temp_dy;
-	camera->floor = camera->temp_floor;
-	camera->zoom = camera->temp_zoom;
+	t_scroll* cam = (t_scroll*)camera;
+
+	while(!key[KEY_ESC])
+	{
+		usleep(SLEEPING_TIME);
+		cam->dx = cam->temp_dx;
+		cam->dy = cam->temp_dy;
+		cam->floor = cam->temp_floor;
+		cam->zoom = cam->temp_zoom;
+	}
+	return NULL;
 }
 
 t_scroll * init_scroll ()
@@ -28,19 +35,19 @@ void* zoom (void * camera)
 {
 	t_scroll* cam = (t_scroll*)camera;
 
-	while(1)
+	while(!key[KEY_ESC])
 	{
-		usleep(500);
+		usleep(LONG_SLEEPING_TIME);
 		if(key[KEY_PLUS_PAD] && cam->temp_zoom<2.0)
 		{
-		while(key[KEY_PLUS_PAD]){ usleep(500); }
+		while(key[KEY_PLUS_PAD]){ usleep(LONG_SLEEPING_TIME); }
 			cam->temp_zoom=cam->temp_zoom*2.0;
 			cam->temp_dx*=2;
 			cam->temp_dy*=2;
 		}
 		if(key[KEY_MINUS_PAD]&& cam->temp_zoom>0.5)
 		{
-		while(key[KEY_MINUS_PAD]){ usleep(500); }
+		while(key[KEY_MINUS_PAD]){ usleep(LONG_SLEEPING_TIME); }
 			cam->temp_zoom=cam->temp_zoom*0.5;
 			cam->temp_dx/=2;
 			cam->temp_dy/=2;
@@ -54,17 +61,17 @@ void* floor_c (void * camera)
 {
 	t_scroll* cam = (t_scroll*)camera;
 
-	while(1)
+	while(!key[KEY_ESC])
 	{
-		usleep(500);
+		usleep(LONG_SLEEPING_TIME);
 		if(key[KEY_PGDN] && cam->temp_floor >-2)
 		{
-			while(key[KEY_PGDN]){ usleep(500); }
+			while(key[KEY_PGDN]){ usleep(LONG_SLEEPING_TIME); }
 			cam->temp_floor--;
 		}
 		if(key[KEY_PGUP] && cam->temp_floor<0)
 		{
-			while(key[KEY_PGUP]){ usleep(500); }
+			while(key[KEY_PGUP]){ usleep(LONG_SLEEPING_TIME); }
 			cam->temp_floor++;
 		}
 	}
@@ -75,14 +82,28 @@ void* floor_c (void * camera)
 void* scrolling (void * camera)
 {
 	t_scroll* cam = (t_scroll*)camera;
+	int taped = 0;
 
-	while(1)
+	while(!key[KEY_ESC])
 	{
-		usleep(250);
-		if(key[KEY_DOWN] && cam->temp_dy < size_map * TILE_H / 2 *cam->temp_zoom + SCREEN_H) cam->temp_dy ++;
-		if(key[KEY_UP]) cam->temp_dy --;
-		if(key[KEY_LEFT]) cam->temp_dx --;
-		if(key[KEY_RIGHT]) cam->temp_dx ++;
+		if(taped)
+		{
+			usleep(SHORT_SLEEPING_TIME);
+			if(!key[KEY_DOWN] && !key[KEY_UP] && !key[KEY_RIGHT] && !key[KEY_LEFT]) taped = 0;
+			if(key[KEY_DOWN] && cam->temp_dy < size_map * TILE_H / 2 *cam->temp_zoom + SCREEN_H) cam->temp_dy ++;
+			if(key[KEY_UP]) cam->temp_dy --;
+			if(key[KEY_LEFT]) cam->temp_dx --;
+			if(key[KEY_RIGHT]) cam->temp_dx ++;
+		}
+		else
+		{
+			usleep(LONG_SLEEPING_TIME);
+			if(key[KEY_DOWN] || key[KEY_UP] || key[KEY_RIGHT] || key[KEY_LEFT]) taped = 1;
+			if(key[KEY_DOWN] && cam->temp_dy < size_map * TILE_H / 2 *cam->temp_zoom + SCREEN_H) cam->temp_dy ++;
+			if(key[KEY_UP]) cam->temp_dy --;
+			if(key[KEY_LEFT]) cam->temp_dx --;
+			if(key[KEY_RIGHT]) cam->temp_dx ++;
+		}
 	}
 	return NULL;
 }

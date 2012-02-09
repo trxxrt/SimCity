@@ -24,7 +24,19 @@
 #include "../shared/val.h"
 #include "action.h"
 
-void game();
+typedef struct _game {
+
+	int simulateur;
+	time_t temps;
+	t_tiles * tiles;
+	BITMAP * buffer;
+	t_case **tab;
+	t_scroll * camera;
+	t_menu * menu;
+
+}t_game;
+
+void start_game();
 
 #endif // HEADER_CONTROLLER_GAME_INCLUDED
 

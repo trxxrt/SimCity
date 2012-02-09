@@ -2,7 +2,7 @@
 
 
 /**
- *	fonction de mise à jour d'un réseau 
+ *	fonction de mise à jour d'un réseau
 
  *	@param: - tab -> tableau de case de la map à mettre à jour
  *		- t -> type du réseau à mettre à jour
@@ -25,7 +25,7 @@ void net_maj(t_case** tab, int t)
 			else if((t==NET_ELEC)&&(tab[i][j].state0==POWER_PLANT)&&(tab[i][j].state1_m==0))
 				net_run(tab, t, i, j);
 		}
-	
+
 }
 
 
@@ -42,7 +42,7 @@ void net_run(t_case** tab, int t, int x, int y)
 {
 	//ressources
 	int inf = 50000;
-	int *c;
+	int *c = NULL;
 	File* f1;
 
 	//initialisation :
@@ -58,7 +58,7 @@ void net_run(t_case** tab, int t, int x, int y)
 
 	//allocation de la file :
 	f1 = creerFile(500);
-	
+
 	//push des voisins non marqué dans la liste :
 	if(net_is_marq(&tab[x+1][y], t))
 		enfiler(f1, net_pos_alloc(x+1, y));
@@ -69,7 +69,7 @@ void net_run(t_case** tab, int t, int x, int y)
 	if(net_is_marq(&tab[x][y-1], t))
 		enfiler(f1, net_pos_alloc(x, y-1));
 
-	//parcourt du tableau 
+	//parcourt du tableau
 	while(!fileVide(f1))
 	{
 		t_net_pos* temp = NULL;
@@ -95,7 +95,7 @@ void net_run(t_case** tab, int t, int x, int y)
 		f1 = f2;
 	}
 
-		
+
 }
 
 
@@ -203,7 +203,7 @@ void net_adj_run(t_case** tab, int t, int x, int y, int* c)
 			k = k * -1;
 		}
 	}
-	
+
 }
 
 
@@ -258,7 +258,7 @@ int net_is_marq(t_case* p, int t)
 
 	return ret;
 }
-		
+
 
 /**
  *	fonction d'allocation d'un t_net_pos
