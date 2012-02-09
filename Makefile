@@ -36,11 +36,11 @@ Release: $(EXE) clean_obj
 	cp configuration.cfg bin/Release
 
 $(EXE): $(OBJ)
-	@echo "\n=== linking des objets ==="
+	@echo "\n=== linking des objets en ==="
 	gcc -o $@ $^ $(FLAGS)
 
 %.o: %.c %.h
-	@echo "\ncompilation de $<"
+	@echo "\n > compilation de $<"
 	gcc -o $@ -c $< $(FLAGS)
 
 cleanDebug: clean
@@ -49,9 +49,9 @@ cleanRelease: clean
 
 clean: clean_obj
 	rm -f $(EXE)
-	rm -f SimCity.layout SimCity.depend
+	rm -f Simcity.layout Simcity.depend
 	rm -Rf bin
 	
 clean_obj:
-	@echo "\n=== Clean  ===\n"
+	@echo "\n=== Clean up du projet ===\n"
 	rm -f $(OBJ)

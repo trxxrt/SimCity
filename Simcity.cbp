@@ -55,6 +55,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/controller/init.h" />
+		<Unit filename="src/controller/network.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/controller/network.h" />
+		<Unit filename="src/controller/simu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/controller/simu.h" />
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
