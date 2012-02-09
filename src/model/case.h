@@ -25,32 +25,32 @@
 
 typedef struct _case
 {
-    //Sol : habitation, routes
-    int state0;
-    int state0_m;
+	//Sol : habitation, routes
+	int state0;
+	int state0_m;
 
-    //Sous-sol -1 : electricite
-    int state1;
-    int state1_m;
+	//Sous-sol -1 : electricite
+	int state1;
+	int state1_m;
 
-    //Sous sol -2 : eau
-    int state2;
-    int state2_m;
+	//Sous sol -2 : eau
+	int state2;
+	int state2_m;
 
-    //nombre d'habitants
-    int habit_nbr;
+	//nombre d'habitants
+	int habit_nbr;
 
-    //nombre d'années à construire
-    int y_build;
+	//nombre d'années à construire
+	int y_build;
 
-    //variables de connexion aux réseaux :
-    int water;
-    int elec;
-    int road;
+	//variables de connexion aux réseaux :
+	int water;
+	int elec;
+	int road;
 
-    //nombre de places dans le bâtiment actuel:
-    int build_size;
-    int build_img;
+	//nombre de places dans le bâtiment actuel:
+	int build_size;
+	int build_img;
 } t_case;
 
 t_case **init_tabCases();

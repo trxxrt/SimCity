@@ -8,15 +8,15 @@
 
 typedef struct _tiles
 {
-    BITMAP * ground;
-    BITMAP * sea;
-    BITMAP * road;
-    BITMAP * construct;
-    BITMAP * house;
-    BITMAP * powerplant;
-    BITMAP * water;
-    BITMAP * electric;
-    BITMAP * conduct;
+	BITMAP * ground;
+	BITMAP * sea;
+	BITMAP * road;
+	BITMAP * construct;
+	BITMAP * house;
+	BITMAP * powerplant;
+	BITMAP * water;
+	BITMAP * electric;
+	BITMAP * conduct;
 } t_tiles;
 
 t_tiles * load_tiles();

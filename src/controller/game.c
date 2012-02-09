@@ -17,7 +17,7 @@ void game()
 	// 1. initialisation des variables de jeu
 	size_map = 15;
 	camera = init_scroll();
-   	buffer = create_bitmap(SCREEN_W, SCREEN_H);
+	buffer = create_bitmap(SCREEN_W, SCREEN_H);
 	tiles = load_tiles();
 	tab = init_tabCases();
 

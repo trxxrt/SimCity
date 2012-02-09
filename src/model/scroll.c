@@ -10,18 +10,18 @@ void update_camera (t_scroll* camera)
 
 t_scroll * init_scroll ()
 {
-    t_scroll * camera=malloc(sizeof(t_scroll));
+	t_scroll * camera=malloc(sizeof(t_scroll));
 
-    camera->dx=0;
-    camera->dy=0;
-    camera->zoom=1.0;
-    camera->floor=0;
-    camera->temp_dx=0;
-    camera->temp_dy=0;
-    camera->temp_zoom=1.0;
-    camera->temp_floor=0;
+	camera->dx=0;
+	camera->dy=0;
+	camera->zoom=1.0;
+	camera->floor=0;
+	camera->temp_dx=0;
+	camera->temp_dy=0;
+	camera->temp_zoom=1.0;
+	camera->temp_floor=0;
 
-    return camera;
+	return camera;
 }
 
 void* zoom (void * camera)
@@ -47,7 +47,7 @@ void* zoom (void * camera)
 		}
 	}
 
-    return NULL;
+	return NULL;
 }
 
 void* floor_c (void * camera)
@@ -69,7 +69,7 @@ void* floor_c (void * camera)
 		}
 	}
 
-    return NULL;
+	return NULL;
 }
 
 void* scrolling (void * camera)

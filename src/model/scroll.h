@@ -8,14 +8,14 @@
 //Gestion du scrolling et du zoom
 typedef struct scroll
 {
-    int dx;
-    int dy;
-    float zoom;
-    int floor;
-    int temp_dx;
-    int temp_dy;
-    float temp_zoom;
-    int temp_floor;
+	int dx;
+	int dy;
+	float zoom;
+	int floor;
+	int temp_dx;
+	int temp_dy;
+	float temp_zoom;
+	int temp_floor;
 
 } t_scroll;
 
