@@ -11,7 +11,7 @@
 int simu_raz(t_case** tab);
 
 /*fonction de simulation*/
-void simu_all(t_case** tab);
+int simu_all(t_case** tab);
 
 /*fonction de gesion des flux de population*/
 void simu_pop(t_case* p);

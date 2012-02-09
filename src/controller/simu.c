@@ -34,15 +34,16 @@ int simu_raz(t_case** tab)
 
  * 	@param: - tab -> tableau de case de la map à simuler pour ce tour
 
- * 	@return: nothing
+ * 	@return: nombre d'habitants sur la carte
 **/
-void simu_all(t_case** tab)
+int simu_all(t_case** tab)
 {
 	//ressources 
 	int i, j;
+	int ret;
 
 	//remise à zéro du tableau de case :
-	simu_raz(tab);
+	ret = simu_raz(tab);
 
 	//test des liaisons aux réseaux :
 	//réseau routier :
@@ -59,6 +60,8 @@ void simu_all(t_case** tab)
 			simu_pop(&tab[i][j]);
 			simu_bmp_maj(&tab[i][j]);
 		}
+
+	return ret;
 }
 
 
