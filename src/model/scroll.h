@@ -4,6 +4,7 @@
 #include <allegro.h>
 
 #include "../shared/val.h"
+#include "menu.h"
 
 //Gestion du scrolling et du zoom
 typedef struct scroll
@@ -16,7 +17,7 @@ typedef struct scroll
 	int temp_dy;
 	float temp_zoom;
 	int temp_floor;
-
+	t_menu* menu;
 } t_scroll;
 
 //Initialisation camera
