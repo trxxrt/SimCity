@@ -18,12 +18,12 @@ int simu_raz(t_case** tab)
 		for(j=0; j<size_map; j++)
 		{
 			//raz des valeurs :
-			tab[i][j]->state0_m = 0;
-			tab[i][j]->state1_m = 0;
-			tab[i][j]->state2_m = 0;
+			tab[i][j].state0_m = 0;
+			tab[i][j].state1_m = 0;
+			tab[i][j].state2_m = 0;
 
 			//compte des habitants :
-			retour += tab[i][j]->habit_nbr;
+			retour += tab[i][j].habit_nbr;
 		}
 
 	return retour;
@@ -56,8 +56,8 @@ void simu_all(t_case** tab)
 	for(i=0; i<size_map; i++)
 		for(j=0; j<size_map; j++)
 		{
-			simu_pop(tab[i][j]);
-			simu_bmp_maj(tab[i][j]);
+			simu_pop(&tab[i][j]);
+			simu_bmp_maj(&tab[i][j]);
 		}
 }
 

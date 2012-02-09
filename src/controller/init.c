@@ -9,6 +9,9 @@ void alleg_init(void)
 	if(config)
 	{
 		i = fscanf(config, "%d %d %d", &full, &w, &h);
+		if(i != 3){
+			perror("***ERREUR*** : lors de la lecture des configs dans le fichier\nAbandon...");
+			exit(EXIT_FAILURE);}
 		if(!full) full = GFX_AUTODETECT_WINDOWED;
 		else full = GFX_AUTODETECT_FULLSCREEN;
 		screen_width = w;
