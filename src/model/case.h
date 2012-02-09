@@ -40,9 +40,6 @@ typedef struct _case
     //nombre d'habitants
     int habit_nbr;
 
-    //images actueles du bâtiment
-    BITMAP* img;
-
     //nombre d'années à construire
     int y_build;
 
@@ -53,6 +50,7 @@ typedef struct _case
 
     //nombre de places dans le bâtiment actuel:
     int build_size;
+    int build_img;
 } t_case;
 
 t_case **init_tabCases();
