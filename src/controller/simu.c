@@ -47,11 +47,11 @@ int simu_all(t_case** tab)
 
 	//test des liaisons aux réseaux :
 	//réseau routier :
-	//TODO
-	//réseau électrique :
-	//TODO
+	net_maj(tab, NET_ROAD);
+	//réseau électrique 
+	net_maj(tab, NET_ELEC);
 	//réseau d'eau :
-	//TODO
+	net_maj(tab, NET_WATER);
 
 	//mouvements de population et mise à jour des bitmaps :
 	for(i=0; i<size_map; i++)
@@ -79,7 +79,7 @@ void simu_pop(t_case* p)
 	int add;
 
 	//on commence par vérifier si c'est bien une case d'habitation :
-	if(p->state0 == CONSTRUCT)
+	if((p->state0 == CONSTRUCT) || (p->state0 == HOUSE) || (p->state0 == IN_CONSTRUCTION))
 	{
 		//si non connecté à une route
 		if(!p->road)
@@ -169,7 +169,8 @@ void simu_bmp_maj(t_case* p)
 		//si on a pas de bâtiments
 		if(p->build_img < 0)
 		{
-			//TODO switch des chantiers (au hasard)
+			//switch des chantiers (au hasard)
+			p->state0 = IN_CONSTRUCTION;
 			p->y_build = p->habit_nbr+1;
 		}
 		else
@@ -181,7 +182,9 @@ void simu_bmp_maj(t_case* p)
 				//si on a fini de construire :
 				if(!p->y_build)
 				{
-					//TODO choix de la bitmap à afficher pour le nombre d'habitats
+					//choix de la bitmap à afficher pour le nombre d'habitats
+					p->state0 = HOUSE;
+					p->build_size = 10;
 				}
 			}
 			else
@@ -192,7 +195,8 @@ void simu_bmp_maj(t_case* p)
 					//on vérifi si on agrandi le batiment (une chance sur 3
 					if(rand()%3 == 0)
 					{
-						//TODO switch des chantiers
+						//switch des chantiers
+						p->state0 = IN_CONSTRUCTION;
 						p->y_build = p->habit_nbr+1;
 					}
 				}
