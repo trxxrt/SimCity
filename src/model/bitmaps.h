@@ -17,6 +17,7 @@ typedef struct _tiles
 	BITMAP * water;
 	BITMAP * electric;
 	BITMAP * conduct;
+	BITMAP * in_construction;
 } t_tiles;
 
 t_tiles * load_tiles();

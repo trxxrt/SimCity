@@ -16,6 +16,7 @@
 #define HOUSE 4
 #define POWER_PLANT 5
 #define WATER 6
+#define IN_CONSTRUCTION 9
 
 //Level -1
 #define ELECTRIC 7

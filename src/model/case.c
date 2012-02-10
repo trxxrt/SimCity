@@ -21,7 +21,7 @@ t_case **init_tabCases()
 			else
 			{
 				tab[i][j].state0=GROUND;
-				tab[i][j].state1=ELECTRIC;
+				tab[i][j].state1=GROUND;
 				tab[i][j].state2=GROUND;
 			}
 

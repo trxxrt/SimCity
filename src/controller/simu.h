@@ -6,6 +6,7 @@
 
 #include "../model/case.h"
 #include "../shared/val.h"
+#include "network.h"
 
 /*fonction de raz des différents marqueurs et comptage de la population*/
 int simu_raz(t_case** tab);
