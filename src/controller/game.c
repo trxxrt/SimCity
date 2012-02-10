@@ -22,7 +22,7 @@ void start_game()
 
 	// 1. initialisation des variables de jeu
 	end_of_game = 0;
-	size_map = 15;
+	size_map = SIZE_OF_MAP;
 	menu = initi_menu();
 	end_of_game = 0;
 	game.menu = menu;
