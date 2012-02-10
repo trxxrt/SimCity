@@ -15,13 +15,16 @@ void start_game()
 	pthread_t thread_scroll;
 	pthread_t thread_floor;
 	pthread_t thread_action;
+	pthread_t thread_check_end_of_game;
 	pthread_t thread_zoom;
 	pthread_t thread_map;
 	pthread_t thread_update_camera;
 
 	// 1. initialisation des variables de jeu
+	end_of_game = 0;
 	size_map = 15;
 	menu = initi_menu();
+	end_of_game = 0;
 	game.menu = menu;
 	camera = init_scroll();
 	game.camera = camera;
@@ -39,6 +42,7 @@ void start_game()
 	pthread_create(&thread_action, NULL, action, (void*)&game);
 	pthread_create(&thread_map, NULL, print_map, (void*)&game);
 	pthread_create(&thread_update_camera, NULL, update_camera, (void*)camera);
+	pthread_create(&thread_check_end_of_game, NULL, check_end_of_game, (void*)&game);
 
 	// 3. initialisation du temps
 	temps = time(NULL);

@@ -12,6 +12,9 @@
 //la taille de la map
 int size_map;
 
+//fin du jeu
+int end_of_game;
+
 //la résolution de l'écran :
 int screen_width;
 int screen_height;

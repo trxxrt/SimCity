@@ -4,7 +4,7 @@ void* update_camera (void* camera)
 {
 	t_scroll* cam = (t_scroll*)camera;
 
-	while(!key[KEY_ESC])
+	while(!end_of_game)
 	{
 		usleep(SLEEPING_TIME);
 		cam->dx = cam->temp_dx;
@@ -35,7 +35,7 @@ void* zoom (void * camera)
 {
 	t_scroll* cam = (t_scroll*)camera;
 
-	while(!key[KEY_ESC])
+	while(!end_of_game)
 	{
 		usleep(LONG_SLEEPING_TIME);
 		if(key[KEY_PLUS_PAD] && cam->temp_zoom<2.0)
@@ -61,7 +61,7 @@ void* floor_c (void * camera)
 {
 	t_scroll* cam = (t_scroll*)camera;
 
-	while(!key[KEY_ESC])
+	while(!end_of_game)
 	{
 		usleep(LONG_SLEEPING_TIME);
 		if(key[KEY_PGDN] && cam->temp_floor >-2)
@@ -84,7 +84,7 @@ void* scrolling (void * camera)
 	t_scroll* cam = (t_scroll*)camera;
 	int taped = 0;
 
-	while(!key[KEY_ESC])
+	while(!end_of_game)
 	{
 		if(taped)
 		{

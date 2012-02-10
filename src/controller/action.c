@@ -1,5 +1,18 @@
 #include "action.h"
 
+void* check_end_of_game(void* game_r)
+{
+	t_game* game = (t_game*)game_r;
+
+	while(!end_of_game)
+	{
+		usleep(LONG_SLEEPING_TIME);
+		if(key[KEY_ESC]) end_of_game = 1;
+	}
+
+	return NULL;
+}
+
 void* action(void* game_r)
 {
 	// 0. déclaration des variables locales
@@ -9,7 +22,7 @@ void* action(void* game_r)
 	t_scroll* cam = game->camera;
 
 	// 1. cas du clic gauche
-	while(!key[KEY_ESC])
+	while(!end_of_game)
 	{
 		usleep(SLEEPING_TIME);
 		if(mouse_b&1)

@@ -15,7 +15,7 @@ void* print_map (void* game_r)
 	int dy;
 	float zoom;
 
-	while(!key[KEY_ESC])
+	while(!end_of_game)
 	{
 		usleep(LONG_SLEEPING_TIME);
 
