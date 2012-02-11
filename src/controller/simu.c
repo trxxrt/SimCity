@@ -184,7 +184,9 @@ void simu_bmp_maj(t_case* p)
 				{
 					//choix de la bitmap à afficher pour le nombre d'habitats
 					p->state0 = HOUSE;
-					p->build_size = 10;
+					p->build_size += BUILD_MERGE_SIZE;
+					if(p->build_size >= BUILD_MAX_SIZE)
+						p->build_size = BUILD_MAX_SIZE;
 				}
 			}
 			else

@@ -8,6 +8,9 @@
 #include "../shared/val.h"
 #include "network.h"
 
+#define BUILD_MERGE_SIZE 10
+#define BUILD_MAX_SIZE 50
+
 /*fonction de raz des différents marqueurs et comptage de la population*/
 int simu_raz(t_case** tab);
 
