@@ -36,32 +36,41 @@ int simu_raz(t_case** tab)
 
  * 	@return: nombre d'habitants sur la carte
 **/
-int simu_all(t_case** tab)
+void* simu_all(void* game_r)
 {
 	//ressources 
 	int i, j;
 	int ret;
+	t_game* game = (t_game*)game_r;
+	t_case** tab = (t_case**)game->tab;
+	
+	while(!key[KEY_ESC])
+	{
 
-	//remise à zéro du tableau de case :
-	ret = simu_raz(tab);
+		usleep(VERY_LONG_SLEEPING_TIME);
 
-	//test des liaisons aux réseaux :
-	//réseau routier :
-	net_maj(tab, NET_ROAD);
-	//réseau électrique 
-	net_maj(tab, NET_ELEC);
-	//réseau d'eau :
-	net_maj(tab, NET_WATER);
+		//remise à zéro du tableau de case :
+		ret = simu_raz(tab);
 
-	//mouvements de population et mise à jour des bitmaps :
-	for(i=0; i<size_map; i++)
-		for(j=0; j<size_map; j++)
-		{
-			simu_pop(&tab[i][j]);
-			simu_bmp_maj(&tab[i][j]);
-		}
+		//test des liaisons aux réseaux :
+		//réseau routier :
+		net_maj(tab, NET_ROAD);
+		//réseau électrique 
+		net_maj(tab, NET_ELEC);
+		//réseau d'eau :
+		net_maj(tab, NET_WATER);
 
-	return ret;
+		//mouvements de population et mise à jour des bitmaps :
+		for(i=0; i<size_map; i++)
+			for(j=0; j<size_map; j++)
+			{
+				simu_pop(&tab[i][j]);
+				simu_bmp_maj(&tab[i][j]);
+			}
+			
+		printf("nb habitants : %d\n", ret);
+	}
+	return NULL;
 }
 
 

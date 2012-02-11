@@ -19,6 +19,7 @@ void start_game()
 	pthread_t thread_zoom;
 	pthread_t thread_map;
 	pthread_t thread_update_camera;
+	pthread_t thread_simu;
 
 	// 1. initialisation des variables de jeu
 	end_of_game = 0;
@@ -43,6 +44,7 @@ void start_game()
 	pthread_create(&thread_map, NULL, print_map, (void*)&game);
 	pthread_create(&thread_update_camera, NULL, update_camera, (void*)camera);
 	pthread_create(&thread_check_end_of_game, NULL, check_end_of_game, (void*)&game);
+	pthread_create(&thread_simu, NULL, simu_all, (void*)&game);
 
 	// 3. initialisation du temps
 	temps = time(NULL);
@@ -57,4 +59,5 @@ void start_game()
 	pthread_cancel(thread_scroll);
 	pthread_cancel(thread_zoom);
 	pthread_cancel(thread_map);
+	pthread_cancel(thread_simu);
 }

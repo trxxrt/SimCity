@@ -6,6 +6,7 @@
 
 #include "../model/case.h"
 #include "../shared/val.h"
+#include "game.h"
 #include "network.h"
 
 #define BUILD_MERGE_SIZE 10
@@ -15,7 +16,7 @@
 int simu_raz(t_case** tab);
 
 /*fonction de simulation*/
-int simu_all(t_case** tab);
+void* simu_all(void* game);
 
 /*fonction de gesion des flux de population*/
 void simu_pop(t_case* p);

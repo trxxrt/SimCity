@@ -23,10 +23,12 @@
 #include "../view/display_map.h"
 #include "../shared/val.h"
 #include "action.h"
+#include "simu.h"
 
 typedef struct _game {
 
 	int simulateur;
+	int nb_habitant;
 	time_t temps;
 	t_tiles * tiles;
 	BITMAP * buffer;
