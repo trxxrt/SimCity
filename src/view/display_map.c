@@ -13,19 +13,22 @@ void* print_map (void* game_r)
 	t_tiles * tiles = game->tiles;
 	int dx;
 	int dy;
+	int floor;
 	float zoom;
 
 	while(!end_of_game)
 	{
-		usleep(LONG_SLEEPING_TIME);
+		usleep(SLEEPING_TIME);
 
 		dx = camera->dx;
 		dy = camera->dy;
+		floor = camera->floor;
 		zoom = camera->zoom;
 
 		clear_bitmap(buffer);
 
-		if (camera->floor==0)
+		if (floor==0)
+		{
 			for (i=0; i<size_map; i++)
 			{
 				for(j=0; j<size_map; j++)
@@ -52,7 +55,10 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->road, x_screen, y_screen, tiles->road->w * zoom, tiles->road->h * zoom);
 				}
 			}
-		else if (camera->floor==-1)
+			textprintf_ex(buffer, font, SCREEN_W-155, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage CONSTRUCTION", floor);
+		}
+		else if (floor==-1)
+		{
 			for (i=0; i<size_map; i++)
 			{
 				for(j=0; j<size_map; j++)
@@ -69,7 +75,10 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->electric, x_screen, y_screen, tiles->electric->w * zoom, tiles->electric->h * zoom);
 				}
 			}
-		else if (camera->floor==-2)
+			textprintf_ex(buffer, font, SCREEN_W-150, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage ELECTRICITE", floor);
+		}
+		else if (floor==-2)
+		{
 			for (i=0; i<size_map; i++)
 			{
 				for(j=0; j<size_map; j++)
@@ -86,6 +95,8 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->conduct, x_screen, y_screen, tiles->conduct->w * zoom, tiles->conduct->h * zoom);
 				}
 			}
+			textprintf_ex(buffer, font, SCREEN_W-80, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage EAU", floor);
+		}
 		display_menu(buffer, menu);
 		info_click(tab, buffer, camera);
 		draw_sprite(screen, buffer, 0, 0);

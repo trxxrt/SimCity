@@ -2,9 +2,9 @@
 
 /**
  *	fonction de raz des marqueurs des cases de la map
- 
+
  * 	@param: - tab -> tableau de case de la map à raz
- 
+
  * 	@return: - nombre d'habitants sur l'ile
 **/
 int simu_raz(t_case** tab)
@@ -30,7 +30,7 @@ int simu_raz(t_case** tab)
 }
 
 /**
- * 	foction de simulation générale 
+ * 	foction de simulation générale
 
  * 	@param: - tab -> tableau de case de la map à simuler pour ce tour
 
@@ -38,12 +38,12 @@ int simu_raz(t_case** tab)
 **/
 void* simu_all(void* game_r)
 {
-	//ressources 
+	//ressources
 	int i, j;
 	int ret;
 	t_game* game = (t_game*)game_r;
 	t_case** tab = (t_case**)game->tab;
-	
+
 	while(!key[KEY_ESC])
 	{
 
@@ -55,7 +55,7 @@ void* simu_all(void* game_r)
 		//test des liaisons aux réseaux :
 		//réseau routier :
 		net_maj(tab, NET_ROAD);
-		//réseau électrique 
+		//réseau électrique
 		net_maj(tab, NET_ELEC);
 		//réseau d'eau :
 		net_maj(tab, NET_WATER);
@@ -67,7 +67,7 @@ void* simu_all(void* game_r)
 				simu_pop(&tab[i][j]);
 				simu_bmp_maj(&tab[i][j]);
 			}
-			
+
 		printf("nb habitants : %d\n", ret);
 	}
 	return NULL;
@@ -160,6 +160,9 @@ void simu_pop(t_case* p)
 		}
 		p->habit_nbr += add * ((rand()%5) + 1);
 
+		//blindage du nombre d'habitant
+		if(p->habit_nbr < 0)
+			p->habit_nbr = 0;
 	}
 }
 

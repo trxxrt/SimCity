@@ -24,7 +24,7 @@ void* action(void* game_r)
 	// 1. cas du clic gauche
 	while(!end_of_game)
 	{
-		usleep(SLEEPING_TIME);
+		usleep(SHORT_SLEEPING_TIME);
 		if(mouse_b&1)
 		{
 			if(!is_active_menu(game->menu))
@@ -35,19 +35,68 @@ void* action(void* game_r)
 				x2d = (yy / (TILE_H * cam->zoom) + xx / (TILE_W * cam->zoom));
 				y2d = (yy / (TILE_H * cam->zoom) - xx / (TILE_W * cam->zoom));
 
-				while(mouse_b&1){ usleep(LONG_SLEEPING_TIME); }
+				while(mouse_b&1){ usleep(SLEEPING_TIME); }
 
 				if(!(x2d > size_map-1 || x2d < 0 || y2d > size_map-1 || y2d < 0))
 				{
 					//printf("* clicked : CASE (%0.1f, %0.1f) -> (%d, %d)\n", xx, yy, x2d, y2d);
 					printf("clicked : CASE (%d, %d)\n", x2d, y2d);
 					/// TODO : ajout de maison, éléctricité ou eau
+
+					switch (game->menu->last_choice)
+					{
+						case MENU_ROAD :
+
+							printf("AJOUT route\n");
+							game->tab[x2d][y2d].state0 = ROAD;
+
+							break;
+
+						case MENU_B_AREA :
+
+							printf("AJOUT zone d'habitation\n");
+							game->tab[x2d][y2d].state0 = HOUSE;
+
+							break;
+
+						case MENU_WATER :
+
+							printf("AJOUT central d'eau\n");
+							game->tab[x2d][y2d].state0 = WATER;
+
+							break;
+
+						case MENU_POWER_PLANT :
+
+							printf("AJOUT central electrique\n");
+							game->tab[x2d][y2d].state0 = POWER_PLANT;
+
+							break;
+
+						case MENU_CONDUCT :
+
+							printf("AJOUT tuyau d'eau\n");
+							game->tab[x2d][y2d].state2 = CONDUCT;
+
+							break;
+
+						case MENU_ELECTRIC :
+
+							printf("AJOUT electricite\n");
+							game->tab[x2d][y2d].state1 = ELECTRIC;
+
+							break;
+
+						default :
+							break;
+					}
+
 				}
 			}
 			else
 			{
 				click_menu(game->menu);
-				while(mouse_b&1){ usleep(LONG_SLEEPING_TIME); }
+				while(mouse_b&1){ usleep(SLEEPING_TIME); }
 			}
 		}
 	}
