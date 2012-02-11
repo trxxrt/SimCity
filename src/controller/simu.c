@@ -159,10 +159,6 @@ void simu_pop(t_case* p)
 			}
 		}
 		p->habit_nbr += add * ((rand()%5) + 1);
-	
-		//blindage du nombre d'habitant
-		if(p->habit_nbr < 0)
-			p->habit_nbr = 0;
 
 		//blindage du nombre d'habitant
 		if(p->habit_nbr < 0)
