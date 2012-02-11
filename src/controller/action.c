@@ -55,7 +55,7 @@ void* action(void* game_r)
 						case MENU_B_AREA :
 
 							printf("AJOUT zone d'habitation\n");
-							game->tab[x2d][y2d].state0 = HOUSE;
+							game->tab[x2d][y2d].state0 = CONSTRUCT;
 
 							break;
 
