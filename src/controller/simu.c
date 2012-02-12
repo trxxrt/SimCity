@@ -105,7 +105,7 @@ void simu_pop(t_case* p)
 		//si non connecté au réseau d'eau :
 		if(!p->water)
 		{
-			percent_pos -= 10;
+			percent_pos = 0;
 			percent_sub += 20;
 		}
 		else
@@ -117,7 +117,7 @@ void simu_pop(t_case* p)
 		//si non connecté au réseau électrique :
 		if(!p->elec)
 		{
-			percent_pos -= 10;
+			percent_pos = 0;
 			percent_sub += 20;
 		}
 		else
