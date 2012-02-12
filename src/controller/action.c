@@ -35,7 +35,7 @@ void* action(void* game_r)
 				x2d = (yy / (TILE_H * cam->zoom) + xx / (TILE_W * cam->zoom));
 				y2d = (yy / (TILE_H * cam->zoom) - xx / (TILE_W * cam->zoom));
 
-				while(mouse_b&1){ usleep(SLEEPING_TIME); }
+				usleep(LONG_SLEEPING_TIME);
 
 				if(!(x2d > size_map-1 || x2d < 0 || y2d > size_map-1 || y2d < 0))
 				{
