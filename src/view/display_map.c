@@ -103,6 +103,7 @@ void* print_map (void* game_r)
 		}
 
 		//affichage du nombre d'habitants :
+		textprintf_ex(buffer, font, 20, SCREEN_H-40, makecol(0,0,0), makecol(255,255,255), "%d années depuis la création de la ville", game->temps);
 		textprintf_ex(buffer, font, 20, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "Population : %d", game->nb_habitant);
 		display_menu(buffer, menu);
 		info_click(tab, buffer, camera);

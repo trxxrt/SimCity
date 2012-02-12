@@ -68,8 +68,8 @@ void* simu_all(void* game_r)
 				simu_bmp_maj(&tab[i][j]);
 			}
 
-		printf("nb habitants : %d\n", ret);
 		game->nb_habitant = ret;
+		game->temps++;
 	}
 	return NULL;
 }

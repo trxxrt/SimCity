@@ -30,7 +30,7 @@ typedef struct _game {
 
 	int simulateur;
 	int nb_habitant;
-	time_t temps;
+	int temps;
 	t_tiles * tiles;
 	BITMAP * buffer;
 	t_case **tab;

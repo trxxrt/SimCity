@@ -28,6 +28,8 @@ void start_game()
 	size_map = SIZE_OF_MAP;
 	menu = initi_menu();
 	end_of_game = 0;
+	game.nb_habitant = 0;
+	game.temps = 0;
 	game.menu = menu;
 	camera = init_scroll();
 	game.camera = camera;
