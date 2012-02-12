@@ -6,6 +6,7 @@
 #include <allegro.h>
 #include <string.h>
 #include <time.h>
+#include "../view/music.h"
 #include "../shared/platform.h"
 
 #ifdef LINUX

@@ -39,7 +39,7 @@ void click_menu(t_menu * menu)
 		else if (x>760)
 		{
 			menu->last_choice=MENU_NULL;
-			///fonction de changement de mode de musique
+			///fonction de pause/resume
 		}
 	}
 	printf("clicked MENU : button %d\n",menu->last_choice);

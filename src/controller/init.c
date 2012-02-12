@@ -44,7 +44,7 @@ void alleg_init(void)
 	set_uformat(U_UTF8); printf(" OK\n");
 
 	printf("  sound init.................");
-	if(install_sound(DIGI_AUTODETECT, MIDI_NONE, NULL) == 0) printf(" OK\n");
+	if(install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL) == 0) printf(" OK\n");
 	else { printf("FAIL\n"); allegro_exit(); exit(EXIT_FAILURE); }
 
 	printf("  color depth................");

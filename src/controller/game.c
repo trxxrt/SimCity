@@ -12,6 +12,7 @@ void start_game()
 	t_case **tab = NULL;
 	t_scroll * camera = NULL;
 	t_menu * menu = NULL;
+	MIDI * music = NULL;
 	pthread_t thread_scroll;
 	pthread_t thread_floor;
 	pthread_t thread_action;
@@ -19,6 +20,7 @@ void start_game()
 	pthread_t thread_zoom;
 	pthread_t thread_map;
 	pthread_t thread_update_camera;
+	pthread_t thread_music;
 	pthread_t thread_simu;
 
 	// 1. initialisation des variables de jeu
@@ -35,6 +37,8 @@ void start_game()
 	game.tiles = tiles;
 	tab = init_tabCases();
 	game.tab = tab;
+	music = load_midi("res/music/1.mid");
+	play_looped_midi(music, 0, -1);
 
 	// 2 initialisation des threads d'écoute
 	pthread_create(&thread_scroll, NULL, scrolling, (void*)camera);
@@ -43,6 +47,7 @@ void start_game()
 	pthread_create(&thread_action, NULL, action, (void*)&game);
 	pthread_create(&thread_map, NULL, print_map, (void*)&game);
 	pthread_create(&thread_update_camera, NULL, update_camera, (void*)camera);
+	pthread_create(&thread_music, NULL, gest_music, (void*)music);
 	pthread_create(&thread_check_end_of_game, NULL, check_end_of_game, (void*)&game);
 	pthread_create(&thread_simu, NULL, simu_all, (void*)&game);
 
@@ -54,6 +59,7 @@ void start_game()
 
 	// 5. suppression des threads résiduels éventuels
 	pthread_cancel(thread_action);
+	pthread_cancel(thread_music);
 	pthread_cancel(thread_update_camera);
 	pthread_cancel(thread_floor);
 	pthread_cancel(thread_scroll);
