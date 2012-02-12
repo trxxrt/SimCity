@@ -55,7 +55,7 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->road, x_screen, y_screen, tiles->road->w * zoom, tiles->road->h * zoom);
 				}
 			}
-			textprintf_ex(buffer, font, SCREEN_W-155, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage CONSTRUCTION", floor);
+			textprintf_ex(buffer, font, SCREEN_W-155, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage CONSTRUCTION");
 		}
 		else if (floor==-1)
 		{
@@ -77,7 +77,7 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->powerplant, x_screen, y_screen, tiles->powerplant->w * zoom, tiles->powerplant->h * zoom);
 				}
 			}
-			textprintf_ex(buffer, font, SCREEN_W-150, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage ELECTRICITE", floor);
+			textprintf_ex(buffer, font, SCREEN_W-150, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage ELECTRICITE");
 		}
 		else if (floor==-2)
 		{
@@ -99,7 +99,7 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->water, x_screen, y_screen, tiles->water->w * zoom, tiles->water->h * zoom);
 				}
 			}
-			textprintf_ex(buffer, font, SCREEN_W-80, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage EAU", floor);
+			textprintf_ex(buffer, font, SCREEN_W-80, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage EAU");
 		}
 		display_menu(buffer, menu);
 		info_click(tab, buffer, camera);
