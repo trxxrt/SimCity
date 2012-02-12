@@ -52,6 +52,7 @@ typedef struct _case
 	//nombre de places dans le bâtiment actuel:
 	int build_size;
 	int build_img;
+	int build_age;
 } t_case;
 
 t_case **init_tabCases();

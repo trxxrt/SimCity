@@ -21,9 +21,19 @@ void net_maj(t_case** tab, int t)
 			if((t==NET_ROAD)&&(tab[i][j].state0==ROAD)&&(tab[i][j].state0_m==0))
 				net_run(tab, t, i, j);
 			else if((t==NET_WATER)&&(tab[i][j].state0==WATER)&&(tab[i][j].state2_m==0))
+			{
+				tab[i][j].build_age--;
 				net_run(tab, t, i, j);
+				if(tab[i][j].build_age < 0)
+					tab[i][j].state0 = GROUND;
+			}
 			else if((t==NET_ELEC)&&(tab[i][j].state0==POWER_PLANT)&&(tab[i][j].state1_m==0))
+			{
+				tab[i][j].build_age--;
 				net_run(tab, t, i, j);
+				if(tab[i][j].build_age < 0)
+					tab[i][j].state0 = GROUND;
+			}
 		}
 
 }

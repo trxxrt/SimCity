@@ -176,7 +176,7 @@ void simu_pop(t_case* p)
 void simu_bmp_maj(t_case* p)
 {
 	//si on a des habitants :
-	if(p->habit_nbr)
+	if((p->state0 == HOUSE) || (p->state0 == CONSTRUCT) || (p->state0 == IN_CONSTRUCTION))
 	{
 		//si on a pas de bâtiments
 		if(p->build_img < 0)

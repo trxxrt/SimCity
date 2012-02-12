@@ -73,6 +73,8 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->ground, x_screen, y_screen, tiles->ground->w * zoom, tiles->ground->h * zoom);
 					else if(tab[i][j].state1==ELECTRIC)
 						stretch_sprite(buffer,tiles->electric, x_screen, y_screen, tiles->electric->w * zoom, tiles->electric->h * zoom);
+					else if(tab[i][j].state1==POWER_PLANT)
+						stretch_sprite(buffer,tiles->powerplant, x_screen, y_screen, tiles->powerplant->w * zoom, tiles->powerplant->h * zoom);
 				}
 			}
 			textprintf_ex(buffer, font, SCREEN_W-150, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage ELECTRICITE", floor);
@@ -93,6 +95,8 @@ void* print_map (void* game_r)
 						stretch_sprite(buffer,tiles->ground, x_screen, y_screen, tiles->ground->w * zoom, tiles->ground->h * zoom);
 					else if(tab[i][j].state2==CONDUCT)
 						stretch_sprite(buffer,tiles->conduct, x_screen, y_screen, tiles->conduct->w * zoom, tiles->conduct->h * zoom);
+					else if(tab[i][j].state2==WATER)
+						stretch_sprite(buffer,tiles->water, x_screen, y_screen, tiles->water->w * zoom, tiles->water->h * zoom);
 				}
 			}
 			textprintf_ex(buffer, font, SCREEN_W-80, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage EAU", floor);

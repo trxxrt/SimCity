@@ -63,6 +63,8 @@ void* action(void* game_r)
 
 							printf("AJOUT central d'eau\n");
 							game->tab[x2d][y2d].state0 = WATER;
+							game->tab[x2d][y2d].state2 = WATER;
+							game->tab[x2d][y2d].build_age = 100;
 
 							break;
 
@@ -70,6 +72,8 @@ void* action(void* game_r)
 
 							printf("AJOUT central electrique\n");
 							game->tab[x2d][y2d].state0 = POWER_PLANT;
+							game->tab[x2d][y2d].state1 = POWER_PLANT;
+							game->tab[x2d][y2d].build_age = 100;
 
 							break;
 
