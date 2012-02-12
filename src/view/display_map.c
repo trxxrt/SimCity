@@ -101,6 +101,9 @@ void* print_map (void* game_r)
 			}
 			textprintf_ex(buffer, font, SCREEN_W-80, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "étage EAU");
 		}
+
+		//affichage du nombre d'habitants :
+		textprintf_ex(buffer, font, 20, SCREEN_H-20, makecol(0,0,0), makecol(255,255,255), "Population : %d", game->nb_habitant);
 		display_menu(buffer, menu);
 		info_click(tab, buffer, camera);
 		draw_sprite(screen, buffer, 0, 0);

@@ -69,6 +69,7 @@ void* simu_all(void* game_r)
 			}
 
 		printf("nb habitants : %d\n", ret);
+		game->nb_habitant = ret;
 	}
 	return NULL;
 }
